@@ -1,4 +1,4 @@
-package org.academiadecodigo.asynctomatics56.concurrentchatserver;
+package org.academiadecodigo.asynctomatics56.javardizer;
 
 
 import java.io.Closeable;
