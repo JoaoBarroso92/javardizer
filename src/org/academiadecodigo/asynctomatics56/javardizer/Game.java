@@ -4,8 +4,13 @@ import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Game {
@@ -14,13 +19,13 @@ public class Game {
 
     private Prompt prompt;
     private final int MAX_PLAYERS = 5;
-    private int scoreBoard;
-    private List<Socket> connectedUsers;
+    private Map<String, Integer> scoreBoard;
+    private Map<Socket, String> connectedUsers;
 
-    public Game(List<Socket> connectedUsers) {
+    public Game(Map<Socket, String> connectedUsers) {
 
-        prompt = new Prompt(System.in, System.out);
         this.connectedUsers = connectedUsers;
+        this.scoreBoard = new HashMap<>();
 
         waitingForPlayers();
         //gameLogic();
@@ -42,24 +47,5 @@ public class Game {
     // The "prompt view" messages should be sent via PrintWriter!
     public void gameLogic() {
 
-        String[] options = {"Start game", "Exit game"};
-
-        MenuInputScanner scanner = new MenuInputScanner(options);
-        scanner.setMessage("Should I stay or should I go?");
-
-        int answerIndex = prompt.getUserInput(scanner);
-
-        System.out.println("User wants to " + options[answerIndex - 1]);
-
-        switch (answerIndex) {
-            case 1:
-                System.out.println("Option 1");
-                break;
-            case 2:
-                System.out.println("Option 2");
-                break;
-            default:
-                break;
-        }
     }
 }
