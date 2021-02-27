@@ -3,9 +3,12 @@ package org.academiadecodigo.asynctomatics56.javardizer;
 
 
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
+
 import java.io.Closeable;
 import java.io.IOException;
 
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -46,7 +49,6 @@ public class Server {
 
     private void createNewHandler(Socket clientSocket) throws IOException {
 
-        System.out.println("Creating new Handler for " + clientSocket);
         ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
         clientHandler = new ClientHandler(clientSocket, connectedUsers);
         executor.submit(clientHandler);
@@ -54,16 +56,16 @@ public class Server {
 
     private void listen(ServerSocket serverSocket) throws IOException {
 
-        System.out.println("Waiting for connection");
         clientSocket = serverSocket.accept();
-        System.out.println("Client accepted: " + clientSocket);
+        OutputStream os = clientSocket.getOutputStream();
+        os.write(Ascii.MAIN_MENU_IMG.getBytes());
+        os.flush();
     }
 
 
 
 
     private void cleanup(Closeable closeable) {
-
         if (closeable != null) {
             try {
                 if (clientSocket.isClosed() || serverSocket.isClosed())

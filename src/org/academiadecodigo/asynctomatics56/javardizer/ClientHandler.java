@@ -1,6 +1,7 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
@@ -50,8 +51,7 @@ public class ClientHandler implements Runnable {
         inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         if(inputReader.readLine().equals("/quit")) {
             OutputStream os = clientSocket.getOutputStream();
-            String s = "ja fostes\n";
-            os.write(s.getBytes());
+            os.write(Messages.EXIT_GAME_MSG.getBytes());
             os.flush();
             os.close();
             this.clientSocket.close();
@@ -81,9 +81,8 @@ public class ClientHandler implements Runnable {
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         Prompt prompt = new Prompt(in, out);
         StringInputScanner scn = new StringInputScanner();
-        scn.setMessage("Enter a username: ");
+        scn.setMessage(Messages.ENTER_USERNAME);
         return prompt.getUserInput(scn);
-
 
     }
 
@@ -94,11 +93,10 @@ public class ClientHandler implements Runnable {
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
         } else {
-            String s = "ERROR: " + username + " already in use!";
             OutputStream os = clientSocket.getOutputStream();
-            os.write(s.getBytes());
+            os.write(Messages.NAME_ALREADY_IN_USE.getBytes());
             os.flush();
-            os.close();
+            addClient();
         }
     }
 
