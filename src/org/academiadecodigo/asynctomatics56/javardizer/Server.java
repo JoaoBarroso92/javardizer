@@ -29,6 +29,7 @@ public class Server {
     public Server(int port) {
 
         connectedUsers = new HashMap<>();
+        new Game(connectedUsers);
 
         try {
             openConnection(port);

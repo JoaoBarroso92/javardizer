@@ -40,6 +40,7 @@ public class ClientHandler implements Runnable {
 
     private void serve() throws IOException {
         addClient();
+        System.out.println("playerList size: " + connectedUsers.size());
         while (!clientSocket.isClosed()) {
             readAndSend();
         }
