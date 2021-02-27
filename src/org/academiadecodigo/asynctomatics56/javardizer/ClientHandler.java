@@ -4,7 +4,6 @@ package org.academiadecodigo.asynctomatics56.javardizer;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
 import java.io.*;
@@ -57,10 +56,14 @@ public class ClientHandler implements Runnable {
                 os.close();
                 this.clientSocket.close();
             } else {
-                try {
-                    startGame();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
+                    os.write(Messages.NEED_MORE_PLAYERS.getBytes());
+                } else {
+                    try {
+                        startGame();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
