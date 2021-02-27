@@ -1,5 +1,6 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
@@ -12,7 +13,6 @@ public class Game {
     //CHANGE THE PROGRAM TO COUNT THE PLAYER USING THE SOCKET LIST SIZE
 
     private Prompt prompt;
-    private Player player;
     private final int MAX_PLAYERS = 5;
     private int scoreBoard;
     private List<Socket> connectedUsers;
@@ -20,7 +20,6 @@ public class Game {
     public Game(List<Socket> connectedUsers) {
 
         prompt = new Prompt(System.in, System.out);
-        player = new Player();
         this.connectedUsers = connectedUsers;
 
         waitingForPlayers();
@@ -35,8 +34,7 @@ public class Game {
             System.out.println("playerList size: " + connectedUsers.size());
         }
         if (connectedUsers.size() == MAX_PLAYERS) {
-            System.out.println("The number of player is " + connectedUsers.size() + " so, let's start the Javardizer");
-            System.out.println(ASCII.Javardizer);
+
         }
     }
 

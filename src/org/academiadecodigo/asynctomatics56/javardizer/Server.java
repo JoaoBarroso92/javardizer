@@ -4,6 +4,7 @@ package org.academiadecodigo.asynctomatics56.javardizer;
 
 
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -59,11 +60,10 @@ public class Server {
         clientSocket = serverSocket.accept();
         OutputStream os = clientSocket.getOutputStream();
         os.write(Ascii.MAIN_MENU_IMG.getBytes());
+        os.write(Messages.START_GAME.getBytes());
+        os.write(Messages.QUIT_GAME.getBytes());
         os.flush();
     }
-
-
-
 
     private void cleanup(Closeable closeable) {
         if (closeable != null) {

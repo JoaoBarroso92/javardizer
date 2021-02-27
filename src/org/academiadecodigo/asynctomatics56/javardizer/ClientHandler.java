@@ -21,12 +21,10 @@ public class ClientHandler implements Runnable {
     public ClientHandler(Socket clientSocket, Map<Socket, String> connectedUsers) {
         this.clientSocket = clientSocket;
         this.connectedUsers = connectedUsers;
-
     }
 
     @Override
     public void run() {
-
         try {
             serve();
         } catch (SocketException e) {
@@ -39,7 +37,6 @@ public class ClientHandler implements Runnable {
     }
 
     private void serve() throws IOException {
-
         addClient();
         while (!clientSocket.isClosed()) {
             readAndSend();
@@ -63,7 +60,6 @@ public class ClientHandler implements Runnable {
     }
 
     private void sendMessage(String message) throws IOException {
-
         for (Socket s : connectedUsers.keySet()) {
             if (s != null && !s.equals(this.clientSocket)) {
                 OutputStream os = s.getOutputStream();
@@ -76,7 +72,6 @@ public class ClientHandler implements Runnable {
     }
 
     private String createUsername() throws IOException {
-
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         Prompt prompt = new Prompt(in, out);
@@ -87,9 +82,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void addClient() throws IOException {
-
         String username = createUsername();
-
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
         } else {
@@ -101,7 +94,6 @@ public class ClientHandler implements Runnable {
     }
 
     private void cleanup(Closeable closeable) {
-
         if (closeable != null) {
             try {
                 closeable.close();
