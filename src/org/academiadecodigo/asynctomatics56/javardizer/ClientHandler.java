@@ -9,6 +9,7 @@ import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -16,6 +17,7 @@ public class ClientHandler implements Runnable {
 
     private Socket clientSocket;
     private BufferedReader inputReader;
+    private Map<Socket, Integer> scoreBoard;
     private Map<Socket, String> connectedUsers;
     private Prompt prompt;
 
@@ -23,6 +25,8 @@ public class ClientHandler implements Runnable {
     public ClientHandler(Socket clientSocket, Map<Socket, String> connectedUsers) {
         this.clientSocket = clientSocket;
         this.connectedUsers = connectedUsers;
+        this.scoreBoard = new HashMap<>();
+
     }
 
     @Override
@@ -75,7 +79,7 @@ public class ClientHandler implements Runnable {
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         prompt = new Prompt(in, out);
 
-        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket);
+        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket, scoreBoard);
 
     }
     
@@ -92,6 +96,7 @@ public class ClientHandler implements Runnable {
         String username = createUsername();
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
+            scoreBoard.put(clientSocket, 0);
         } else {
             OutputStream os = clientSocket.getOutputStream();
             os.write(Messages.NAME_ALREADY_IN_USE.getBytes());
