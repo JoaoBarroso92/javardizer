@@ -2,6 +2,7 @@ package org.academiadecodigo.asynctomatics56.javardizer;
 
 
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
@@ -56,37 +57,25 @@ public class ClientHandler implements Runnable {
                 os.close();
                 this.clientSocket.close();
             } else {
-                if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
-                    os.write(Messages.NEED_MORE_PLAYERS.getBytes());
-                } else {
+                try {
                     startGame();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
     }
 
-    private void startGame() throws IOException {
+    private void startGame() throws IOException, InterruptedException {
 
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         prompt = new Prompt(in, out);
 
-        String[] options = {"a", "b", "c", "d"};
-        MenuInputScanner question1 = new MenuInputScanner(options);
-        question1.setMessage("Qual é a primeira letra do alfabeto?");
+        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket);
 
-        int answerIndex = prompt.getUserInput(question1);
-        switch (answerIndex) {
-            case 1:
-                OutputStream option1 = clientSocket.getOutputStream();
-                option1.write("Correct answer".getBytes());
-                break;
-            default:
-                OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write("Wrong answer".getBytes());
-        }
     }
-
+    
     private String createUsername() throws IOException {
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
