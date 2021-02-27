@@ -14,6 +14,7 @@ public class Game {
     private Prompt prompt;
     private Player player;
     private final int MAX_PLAYERS = 5;
+    private int scoreBoard;
     private List<Socket> connectedUsers;
 
     public Game(List<Socket> connectedUsers) {
@@ -35,6 +36,7 @@ public class Game {
         }
         if (connectedUsers.size() == MAX_PLAYERS) {
             System.out.println("The number of player is " + connectedUsers.size() + " so, let's start the Javardizer");
+            System.out.println(ASCII.Javardizer);
         }
     }
 
