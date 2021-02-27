@@ -50,8 +50,6 @@ public class Server {
         ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
         clientHandler = new ClientHandler(clientSocket, connectedUsers);
         executor.submit(clientHandler);
-
-
     }
 
     private void listen(ServerSocket serverSocket) throws IOException {
@@ -60,6 +58,7 @@ public class Server {
         clientSocket = serverSocket.accept();
         System.out.println("Client accepted: " + clientSocket);
     }
+
 
 
 

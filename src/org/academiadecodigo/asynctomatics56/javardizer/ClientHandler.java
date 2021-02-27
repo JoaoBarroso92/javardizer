@@ -20,6 +20,7 @@ public class ClientHandler implements Runnable {
     public ClientHandler(Socket clientSocket, Map<Socket, String> connectedUsers) {
         this.clientSocket = clientSocket;
         this.connectedUsers = connectedUsers;
+
     }
 
     @Override
@@ -39,21 +40,26 @@ public class ClientHandler implements Runnable {
     private void serve() throws IOException {
 
         addClient();
-
         while (!clientSocket.isClosed()) {
             readAndSend();
         }
     }
 
-    private synchronized void readAndSend() throws IOException {
+    private void readAndSend() throws IOException {
 
         inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        if (inputReader.readLine().equals("/quit")) {
-            System.exit(0);
+        if(inputReader.readLine().equals("/quit")) {
+            OutputStream os = clientSocket.getOutputStream();
+            String s = "ja fostes\n";
+            os.write(s.getBytes());
+            os.flush();
+            os.close();
+            this.clientSocket.close();
         } else {
             String message = inputReader.readLine() + "\n";
             sendMessage(message);
         }
+
     }
 
     private void sendMessage(String message) throws IOException {
@@ -61,8 +67,10 @@ public class ClientHandler implements Runnable {
         for (Socket s : connectedUsers.keySet()) {
             if (s != null && !s.equals(this.clientSocket)) {
                 OutputStream os = s.getOutputStream();
-                os.write(message.getBytes());
+                String username = connectedUsers.get(this.clientSocket) + ": " + message;
+                os.write(username.getBytes());
                 os.flush();
+                os.close();
             }
         }
     }
@@ -85,7 +93,6 @@ public class ClientHandler implements Runnable {
 
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
-            System.out.println(connectedUsers.containsValue("Giefweed"));
         } else {
             String s = "ERROR: " + username + " already in use!";
             OutputStream os = clientSocket.getOutputStream();
