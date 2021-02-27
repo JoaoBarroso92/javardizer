@@ -42,21 +42,25 @@ public class ClientHandler implements Runnable {
         addClient();
         System.out.println("playerList size: " + connectedUsers.size());
         while (!clientSocket.isClosed()) {
-            readAndSend();
+            broadcast();
         }
     }
 
-    private void readAndSend() throws IOException {
+    private void broadcast() throws IOException {
         synchronized (this) {
             inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            if(inputReader.readLine().equals("/quit")) {
-                OutputStream os = clientSocket.getOutputStream();
+            OutputStream os = clientSocket.getOutputStream();
+            if (inputReader.readLine().equals("/quit")) {
                 os.write(Messages.EXIT_GAME_MSG.getBytes());
                 os.flush();
                 os.close();
                 this.clientSocket.close();
             } else {
-                startGame();
+                if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
+                    os.write(Messages.NEED_MORE_PLAYERS.getBytes());
+                } else {
+                    startGame();
+                }
             }
         }
     }
@@ -72,7 +76,6 @@ public class ClientHandler implements Runnable {
         question1.setMessage("Qual é a primeira letra do alfabeto?");
 
         int answerIndex = prompt.getUserInput(question1);
-
         switch (answerIndex) {
             case 1:
                 OutputStream option1 = clientSocket.getOutputStream();
@@ -84,20 +87,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    private void sendMessage(String message) throws IOException {
-        synchronized (this) {
-            for (Socket s : connectedUsers.keySet()) {
-                if (s != null && !s.equals(this.clientSocket)) {
-                    OutputStream os = s.getOutputStream();
-                    String username = connectedUsers.get(this.clientSocket) + ": " + message;
-                    os.write(username.getBytes());
-                    os.flush();
-                }
-            }
-        }
-
-    }
-
     private String createUsername() throws IOException {
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
@@ -105,7 +94,6 @@ public class ClientHandler implements Runnable {
         StringInputScanner scn = new StringInputScanner();
         scn.setMessage(Messages.ENTER_USERNAME);
         return prompt.getUserInput(scn);
-
     }
 
     private void addClient() throws IOException {
