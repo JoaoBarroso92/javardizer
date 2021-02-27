@@ -18,15 +18,21 @@ public class Server {
     private List<Socket> connectedUsers;
     private final int NUM_THREADS = 200;
 
+    private Game game;
+
     public Server(int port) {
 
         connectedUsers = new ArrayList<>();
+        game = new Game(connectedUsers);
         try {
             openConnection(port);
             while (true) {
                 listen(serverSocket);
                 createNewHandler(clientSocket);
                 addClient();
+                game.waitingForPlayers();
+
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,6 +40,8 @@ public class Server {
             cleanup(clientSocket);
             cleanup(serverSocket);
         }
+
+
     }
 
     private void openConnection(int port) throws IOException {
@@ -73,4 +81,7 @@ public class Server {
         }
     }
 
+    public int getNumberOfConnectedUsers() {
+        return connectedUsers.size();
+    }
 }

@@ -59,7 +59,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-
     private void cleanup(Closeable closeable) {
 
         if (closeable != null) {
@@ -74,6 +73,10 @@ public class ClientHandler implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public int getNumberOfConnectedUsers() {
+        return connectedUsers.size();
     }
 
 }
