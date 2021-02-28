@@ -7,7 +7,7 @@ Project proposed in the seventh week of the bootcamp and concluded in a weekend.
 
 It is a text based game, inspired by the quiz style, with 10 questions about software engineering.
 
-<font color="blue"> Team Advice </font>
+![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Team Advice`
 
 Please have as much fun playing as we have doing it!
 
