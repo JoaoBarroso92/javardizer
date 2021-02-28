@@ -11,30 +11,75 @@ import java.util.Map;
 
 public class Questions {
 
+<<<<<<< HEAD
     public static final String QUESTION_1 = "What's the first letter of the alphabet?";
     public static final String QUESTION_2 = "What's the sixth letter of the alphabet?";
     public static int counter = 0;
+=======
+    public static final String Q1 = "What's the first letter of the alphabet?";
+    public static final String Q1_ANS_A = "A";
+    public static final String Q1_ANS_B = "B";
+    public static final String Q1_ANS_C = "C";
+    public static final String Q1_ANS_D = "D";
 
-    private static void timer() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    public static final String Q2 = "What's the first letter of the alphabet?";
+    public static final String Q2_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q2_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q2_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q2_ANS_D = "What's the first letter of the alphabet?";
 
-    public static void question1(
-            String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
-            throws IOException, InterruptedException {
+    public static final String Q3 = "What's the first letter of the alphabet?";
+    public static final String Q3_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q3_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q3_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q3_ANS_D = "What's the first letter of the alphabet?";
 
-        String[] options = {"a", "b", "c", "d"};
-        MenuInputScanner question1 = new MenuInputScanner(options);
-        question1.setMessage(question);
+    public static final String Q4 = "What's the first letter of the alphabet?";
+    public static final String Q4_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q4_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q4_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q4_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q5 = "What's the first letter of the alphabet?";
+    public static final String Q5_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q5_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q5_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q5_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q6 = "What's the first letter of the alphabet?";
+    public static final String Q6_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q6_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q6_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q6_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q7 = "What's the first letter of the alphabet?";
+    public static final String Q7_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q7_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q7_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q7_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q8 = "What's the first letter of the alphabet?";
+    public static final String Q8_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q8_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q8_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q8_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q9 = "What's the first letter of the alphabet?";
+    public static final String Q9_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q9_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q9_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q9_ANS_D = "What's the first letter of the alphabet?";
+
+    public static final String Q10 = "What's the first letter of the alphabet?";
+    public static final String Q10_ANS_A = "What's the first letter of the alphabet?";
+    public static final String Q10_ANS_B = "What's the first letter of the alphabet?";
+    public static final String Q10_ANS_C = "What's the first letter of the alphabet?";
+    public static final String Q10_ANS_D = "What's the first letter of the alphabet?";
+
+>>>>>>> questions
 
 
-        int answerIndex = prompt.getUserInput(question1);
-        timer();
-
+<<<<<<< HEAD
         System.out.println("Timer");
 
 
@@ -143,6 +188,8 @@ public class Questions {
         }
         return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins with " + score + " points " + Colors.RESET + "\n");
     }
+=======
+>>>>>>> questions
 }
 
 
