@@ -1,4 +1,4 @@
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](C:\Users\josep\IdeaProjects\ByMeExercises\asynctomatics-beerbreakers\lib\prompt-view.jar!\META-INF")
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `JAVARDIZER`
 ```python
 JAVARDIZER is a project developed by five code cadets from <Academia de Código_>. 
