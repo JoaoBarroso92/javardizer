@@ -20,6 +20,7 @@ public class ClientHandler implements Runnable {
     public static Map<Socket, Integer> scoreBoard;
     public static Map<Socket, String> connectedUsers;
     private Prompt prompt;
+    private MakingQuestions makingQuestions;
 
 
     public ClientHandler(Socket clientSocket, Map<Socket, String> connectedUsers) {
@@ -78,8 +79,11 @@ public class ClientHandler implements Runnable {
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         prompt = new Prompt(in, out);
+        makingQuestions = new MakingQuestions();
 
-        Questions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+        makingQuestions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+
+
 
 
     }
