@@ -69,7 +69,13 @@ public class ClientHandler implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            } else {
+            }
+            if (inputReader.readLine().equals("/shutdown")) {
+                System.out.println("HERE");
+                os.write("System Exit".getBytes());
+                System.exit(0);
+            }
+            else {
                 if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
                     os.write(Messages.NEED_MORE_PLAYERS.getBytes());
                 } else {
