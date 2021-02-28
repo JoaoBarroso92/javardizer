@@ -135,4 +135,6 @@ public class Ascii {
             "         ██║   ██║  ██║███████╗    ███████╗██║ ╚████║██████╔╝\n" +
             "         ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚══════╝╚═╝  ╚═══╝╚═════╝ \n" +
             "                                                       " + Colors.RESET;;
+
+    public static final String SCOREB_BOARD ="";
 }

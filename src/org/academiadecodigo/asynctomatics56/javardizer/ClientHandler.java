@@ -98,7 +98,7 @@ public class ClientHandler implements Runnable {
         out.write(Ascii.Q5.getBytes());
         makingQuestions.question5(Questions.Q5, 2, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.SUPER_BOCK.getBytes());
-        Thread.sleep(2000);
+        Thread.sleep(20000);
         out.write(Ascii.Q6.getBytes());
         makingQuestions.question6(Questions.Q6, 1, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.Q7.getBytes());

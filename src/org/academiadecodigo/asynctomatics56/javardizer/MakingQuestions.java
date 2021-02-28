@@ -283,11 +283,11 @@ public class MakingQuestions {
             case 2:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n\n" + Colors.RESET).getBytes());
         }
         counter++;
         endGame(scoreBoard, connectedUsers);
@@ -301,18 +301,21 @@ public class MakingQuestions {
             for(Socket socket : connectedUsers.keySet()){
                 for(Socket sockets : connectedUsers.keySet()){
                     OutputStream right = socket.getOutputStream();
+                    right.write(Ascii.SCOREB_BOARD.getBytes());
                     right.write((Colors.PURPLE + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
                     System.out.println(((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points")));
                 }
             }
-            for(Socket socket : scoreBoard.keySet()){
+            for(Socket socket : connectedUsers.keySet()){
+
                 OutputStream wrong = socket.getOutputStream();
                 wrong.write(chooseWinner(scoreBoard, connectedUsers).getBytes());
                 wrong.write(Ascii.END.getBytes(StandardCharsets.UTF_8));
                 wrong.write(Ascii.RESTART_GAME.getBytes(StandardCharsets.UTF_8));
                 }
-            }
+
         }
+    }
 
     public String chooseWinner(Map<Socket, Integer> scoreBoard, Map connectedUsers) {
 
@@ -325,7 +328,7 @@ public class MakingQuestions {
                 winner = jb;
             }
         }
-        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins the game with " + score + " points " + Colors.RESET + "\n");
+        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + "\n wins the game with " + score + " points " + Colors.RESET + "\n");
     }
 
 }
