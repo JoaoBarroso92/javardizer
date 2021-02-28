@@ -83,14 +83,18 @@ public class ClientHandler implements Runnable {
         prompt = new Prompt(in, out);
         makingQuestions = new MakingQuestions();
 
+        out.write(Ascii.Q1.getBytes());
+        out.write(Ascii.Q2.getBytes());
+        out.write(Ascii.Q3.getBytes());
         out.write(Ascii.Q4.getBytes());
         out.write(Ascii.Q5.getBytes());
+        out.write(Ascii.Q6.getBytes());
         out.write(Ascii.Q7.getBytes());
+        out.write(Ascii.Q8.getBytes());
+        out.write(Ascii.Q9.getBytes());
+        out.write(Ascii.Q10.getBytes());
         out.write(Ascii.SUPER_BOCK.getBytes());
         makingQuestions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
-
-
-
 
     }
     
