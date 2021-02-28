@@ -1,3 +1,4 @@
+![Alt text](relative/path/to/img.jpg?raw=true "Title")
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `JAVARDIZER`
 ```python
 JAVARDIZER is a project developed by five code cadets from <Academia de Código_>. 
