@@ -1,6 +1,5 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
-
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 
 public class Server {
 

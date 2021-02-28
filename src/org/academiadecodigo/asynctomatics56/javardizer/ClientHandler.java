@@ -1,6 +1,5 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
-
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
@@ -15,7 +14,6 @@ import java.net.SocketException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class ClientHandler implements Runnable {
 
     private Socket clientSocket;
@@ -25,8 +23,8 @@ public class ClientHandler implements Runnable {
     private Prompt prompt;
     private MakingQuestions makingQuestions;
 
-
     public ClientHandler(Socket clientSocket, Map<Socket, String> connectedUsers) {
+
         this.clientSocket = clientSocket;
         this.connectedUsers = connectedUsers;
         this.scoreBoard = new HashMap<>();
@@ -35,6 +33,7 @@ public class ClientHandler implements Runnable {
 
     @Override
     public void run() {
+
         try {
             serve();
         } catch (SocketException e) {
@@ -47,6 +46,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void serve() throws IOException {
+
         addClient();
         System.out.println("playerList size: " + connectedUsers.size());
         while (!clientSocket.isClosed()) {
@@ -55,6 +55,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void broadcast() throws IOException {
+
         synchronized (this) {
             inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             OutputStream os = clientSocket.getOutputStream();
@@ -112,11 +113,13 @@ public class ClientHandler implements Runnable {
     }
     
     private String createUsername() throws IOException {
+
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         Prompt prompt = new Prompt(in, out);
         StringInputScanner scnfake = new StringInputScanner();
         scnfake.setMessage("");
+
         if(prompt.getUserInput(scnfake).equals("/s")){
             StringInputScanner scn = new StringInputScanner();
             scn.setMessage(Messages.ENTER_USERNAME);
@@ -126,6 +129,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void addClient() throws IOException {
+
         String username = createUsername();
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
@@ -135,7 +139,6 @@ public class ClientHandler implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         } else {
             OutputStream os = clientSocket.getOutputStream();
             os.write(Messages.NAME_ALREADY_IN_USE.getBytes());
@@ -145,6 +148,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void cleanup(Closeable closeable) {
+
         if (closeable != null) {
             try {
                 closeable.close();

@@ -26,8 +26,6 @@ public class Ascii {
             "       '' /  |  | |  | |  |  ''    |  |  |    |___  \\/  |  |  \n" +
             "         /   |_\\| |__| |  |        |  |__|    |___ _/\\_ |  |  \n" +
             "                                                                  \n";
-
-
     public static final String Q1 = Colors.GREEN_BOLD_BRIGHT + "\n" +
             "     ____                  _   _               __ \n" +
             "    / __ \\                | | (_)             /_ | \n" +
@@ -136,5 +134,11 @@ public class Ascii {
             "         ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚══════╝╚═╝  ╚═══╝╚═════╝ \n" +
             "                                                       " + Colors.RESET;;
 
-    public static final String SCOREB_BOARD ="";
+    public static final String SCORE_BOARD = Colors.PURPLE + "\n" +
+            "  _____  _____ ____  _____  ______ \n" +
+            " / ____|/ ____/ __ \\|  __ \\|  ____|\n" +
+            "| (___ | |   | |  | | |__) | |__   \n" +
+            " \\___ \\| |   | |  | |  _  /|  __|  \n" +
+            " ____) | |___| |__| | | \\ \\| |____ \n" +
+            "|_____/ \\_____\\____/|_|  \\_\\______" + "\n" + Colors.RESET;
 }
