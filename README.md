@@ -1,4 +1,4 @@
-![Optional Text](../master/READMEIMG/Javardizer.jpg)
+![Optional Text](../master/READMEIMG/READMEIMG_Javardizer.png)
 
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `JAVARDIZER`
 ```python
