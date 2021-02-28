@@ -3,6 +3,6 @@ package org.academiadecodigo.asynctomatics56.javardizer;
 public class Main {
 
     public static void main(String[] args) {
-        new Server(8081);
+        new Server(8082);
     }
 }

@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Questions {
 
@@ -94,13 +97,10 @@ public class Questions {
         MenuInputScanner question3 = new MenuInputScanner(options);
         question3.setMessage(question);
 
-
         int answerIndex = prompt.getUserInput(question3);
         timer();
 
-
         System.out.println("Timer");
-
 
         int score = (Integer) scoreBoard.get(clientSocket);
         switch (answerIndex) {
@@ -115,15 +115,22 @@ public class Questions {
         }
     }
 
-    public static void endGame(Map<Socket, Integer> scoreBoard, Map connectedUsers) throws IOException {
+    public static void endGame(Map<Socket, Integer> scoreBoard, Map<Socket, Integer> connectedUsers) throws IOException {
 
         if(counter == Game.MAX_PLAYERS){
+            for(Socket socket : scoreBoard.keySet()){
+                for(Socket sockets : connectedUsers.keySet()){
+                    OutputStream right = socket.getOutputStream();
+                    right.write((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points").getBytes());
+                    System.out.println(((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points")));
+                }
+            }
             for(Socket socket : scoreBoard.keySet()){
                 OutputStream wrong = socket.getOutputStream();
                 wrong.write(chooseWinner(scoreBoard, connectedUsers).getBytes());
             }
-        }
 
+        }
     }
 
     public static String chooseWinner(Map<Socket, Integer> scoreBoard, Map connectedUsers) {
@@ -139,9 +146,7 @@ public class Questions {
         }
         return connectedUsers.get(winner) + " " + score;
     }
-
 }
-
 
 
 
