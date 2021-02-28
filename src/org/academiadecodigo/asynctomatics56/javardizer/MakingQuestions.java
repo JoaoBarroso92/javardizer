@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class MakingQuestions {
@@ -307,8 +308,8 @@ public class MakingQuestions {
             for(Socket socket : scoreBoard.keySet()){
                 OutputStream wrong = socket.getOutputStream();
                 wrong.write(chooseWinner(scoreBoard, connectedUsers).getBytes());
-                wrong.write(Ascii.END.getBytes());
-                wrong.write(Ascii.RESTART_GAME.getBytes());
+                wrong.write(Ascii.END.getBytes(StandardCharsets.UTF_8));
+                wrong.write(Ascii.RESTART_GAME.getBytes(StandardCharsets.UTF_8));
                 }
             }
         }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -58,9 +59,9 @@ public class Server {
 
         clientSocket = serverSocket.accept();
         OutputStream os = clientSocket.getOutputStream();
-        os.write(Ascii.MAIN_MENU_IMG.getBytes());
-        os.write(Ascii.MA.getBytes());
-        os.write(Ascii.START_GAME.getBytes());
+        os.write(Ascii.MAIN_MENU_IMG.getBytes(StandardCharsets.UTF_8));
+        os.write(Ascii.MA.getBytes(StandardCharsets.UTF_8));
+        os.write(Ascii.START_GAME.getBytes(StandardCharsets.UTF_8));
         os.flush();
     }
 
