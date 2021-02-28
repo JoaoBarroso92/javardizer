@@ -103,7 +103,7 @@ public class MakingQuestions {
                 winner = jb;
             }
         }
-        return connectedUsers.get(winner) + " " + score;
+        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins with " + score + " points " + Colors.RESET + "\n");
     }
 
 }
