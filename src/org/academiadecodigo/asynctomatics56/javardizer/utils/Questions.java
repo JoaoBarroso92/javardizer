@@ -7,15 +7,12 @@ import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class Questions {
 
     public static final String QUESTION_1 = "What's the first letter of the alphabet?";
+    public static final String QUESTION_2 = "What's the sixth letter of the alphabet?";
     public static int counter = 0;
 
     private static void timer() {
@@ -47,14 +44,14 @@ public class Questions {
 
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(("Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                option1.write((Colors.GREEN + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write(("Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                wrong.write((Colors.RED + "Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
         }
 
-        question2(question, correctAnswer, prompt, clientSocket, scoreBoard, connectedUsers);
+        question2(QUESTION_2, 2, prompt, clientSocket, scoreBoard, connectedUsers);
     }
 
     public static void question2(
@@ -75,15 +72,15 @@ public class Questions {
 
         int score = (Integer) scoreBoard.get(clientSocket);
         switch (answerIndex) {
-            case 1:
+            case 2:
 
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(("Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                option1.write((Colors.GREEN + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write(("Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                wrong.write((Colors.RED + "Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
         }
         counter++;
         endGame(scoreBoard, connectedUsers);
@@ -107,11 +104,11 @@ public class Questions {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(("Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                option1.write((Colors.GREEN + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write(("Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                wrong.write((Colors.RED + "Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
         }
     }
 
@@ -121,7 +118,7 @@ public class Questions {
             for(Socket socket : scoreBoard.keySet()){
                 for(Socket sockets : connectedUsers.keySet()){
                     OutputStream right = socket.getOutputStream();
-                    right.write((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points").getBytes());
+                    right.write((Colors.PURPLE + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
                     System.out.println(((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points")));
                 }
             }
@@ -144,7 +141,7 @@ public class Questions {
                 winner = jb;
             }
         }
-        return connectedUsers.get(winner) + " " + score;
+        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins with " + score + " points " + Colors.RESET + "\n");
     }
 }
 

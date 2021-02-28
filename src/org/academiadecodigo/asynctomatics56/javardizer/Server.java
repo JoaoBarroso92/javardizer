@@ -1,14 +1,12 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
 
-
-
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 
+
 import java.io.Closeable;
 import java.io.IOException;
-
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
