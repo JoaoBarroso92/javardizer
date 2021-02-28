@@ -1,6 +1,7 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
@@ -82,6 +83,10 @@ public class ClientHandler implements Runnable {
         prompt = new Prompt(in, out);
         makingQuestions = new MakingQuestions();
 
+        out.write(Ascii.Q4.getBytes());
+        out.write(Ascii.Q5.getBytes());
+        out.write(Ascii.Q7.getBytes());
+        out.write(Ascii.SUPER_BOCK.getBytes());
         makingQuestions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
 
 

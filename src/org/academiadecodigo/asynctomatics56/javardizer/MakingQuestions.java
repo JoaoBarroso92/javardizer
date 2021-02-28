@@ -1,5 +1,6 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Ascii;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Colors;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
@@ -66,6 +67,7 @@ public class MakingQuestions {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
+                option1.write(Ascii.Q1.getBytes());
                 option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
