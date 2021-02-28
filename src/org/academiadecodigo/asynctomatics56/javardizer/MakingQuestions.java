@@ -1,6 +1,7 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Colors;
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
@@ -39,11 +40,11 @@ public class MakingQuestions {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(("Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write(("Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
         }
 
         question2(question, correctAnswer, prompt, clientSocket, scoreBoard, connectedUsers);
@@ -65,11 +66,11 @@ public class MakingQuestions {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write((Colors.GREEN + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write((Colors.RED + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
         }
         counter++;
         endGame(scoreBoard, connectedUsers);
@@ -103,7 +104,7 @@ public class MakingQuestions {
                 winner = jb;
             }
         }
-        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins with " + score + " points " + Colors.RESET + "\n");
+        return (Colors.BLUE_BOLD_BRIGHT + connectedUsers.get(winner) + " wins the game with " + score + " points " + Colors.RESET + "\n");
     }
 
 }
