@@ -79,7 +79,7 @@ public class ClientHandler implements Runnable {
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         prompt = new Prompt(in, out);
 
-        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+        Questions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
 
 
     }
