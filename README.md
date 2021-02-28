@@ -1,4 +1,7 @@
-![Screenshot](https://gitlab.com/dogaz05/asynctomatics-beerbreakers/-/blob/master/READMEIMG/Javardizer.jpg)
+<p align="center">
+  <img src="your_relative_path_here" width="350" title="hover text">
+  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
+</p>
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `JAVARDIZER`
 ```python
 JAVARDIZER is a project developed by five code cadets from <Academia de Código_>. 
