@@ -63,6 +63,12 @@ public class ClientHandler implements Runnable {
                 os.flush();
                 os.close();
                 this.clientSocket.close();
+            } else if(inputReader.readLine().equals("/r")) {
+                try {
+                    startGame();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
                     os.write(Messages.NEED_MORE_PLAYERS.getBytes());
@@ -94,6 +100,8 @@ public class ClientHandler implements Runnable {
         makingQuestions.question4(Questions.Q4, 2, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.Q5.getBytes());
         makingQuestions.question5(Questions.Q5, 2, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.SUPER_BOCK.getBytes());
+        Thread.sleep(2000);
         out.write(Ascii.Q6.getBytes());
         makingQuestions.question6(Questions.Q6, 1, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.Q7.getBytes());
@@ -104,8 +112,6 @@ public class ClientHandler implements Runnable {
         makingQuestions.question9(Questions.Q9, 1, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.Q10.getBytes());
         makingQuestions.question10(Questions.Q10, 2, prompt, clientSocket, scoreBoard, connectedUsers);
-        out.write(Ascii.SUPER_BOCK.getBytes());
-
     }
     
     private String createUsername() throws IOException {

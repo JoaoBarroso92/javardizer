@@ -7,7 +7,9 @@ import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Map;
@@ -305,9 +307,11 @@ public class MakingQuestions {
             for(Socket socket : scoreBoard.keySet()){
                 OutputStream wrong = socket.getOutputStream();
                 wrong.write(chooseWinner(scoreBoard, connectedUsers).getBytes());
+                wrong.write(Ascii.END.getBytes());
+                wrong.write(Ascii.RESTART_GAME.getBytes());
+                }
             }
         }
-    }
 
     public String chooseWinner(Map<Socket, Integer> scoreBoard, Map connectedUsers) {
 
