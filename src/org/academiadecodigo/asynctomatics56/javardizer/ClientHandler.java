@@ -75,17 +75,8 @@ public class ClientHandler implements Runnable {
                 os.write("System Exit".getBytes());
                 System.exit(0);
             }
-            else {
-                if ((connectedUsers.size() < Game.MAX_PLAYERS)) {
-                    os.write(Messages.NEED_MORE_PLAYERS.getBytes());
-                } else {
-                    try {
-                        startGame();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+
+
         }
     }
 
@@ -139,6 +130,12 @@ public class ClientHandler implements Runnable {
         if (!connectedUsers.containsValue(username)) {
             connectedUsers.put(clientSocket, username);
             scoreBoard.put(clientSocket, 0);
+            try {
+                startGame();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         } else {
             OutputStream os = clientSocket.getOutputStream();
             os.write(Messages.NAME_ALREADY_IN_USE.getBytes());
