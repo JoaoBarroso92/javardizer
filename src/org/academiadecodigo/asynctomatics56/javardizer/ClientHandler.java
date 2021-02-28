@@ -104,7 +104,7 @@ public class ClientHandler implements Runnable {
         makingQuestions.question9(Questions.Q9, 1, prompt, clientSocket, scoreBoard, connectedUsers);
         out.write(Ascii.Q10.getBytes());
         makingQuestions.question10(Questions.Q10, 2, prompt, clientSocket, scoreBoard, connectedUsers);
-        //out.write(Ascii.SUPER_BOCK.getBytes());
+        out.write(Ascii.SUPER_BOCK.getBytes());
 
     }
     

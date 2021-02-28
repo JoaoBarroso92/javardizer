@@ -113,7 +113,7 @@ public class Ascii {
 
 
 
-    public static final String SUPER_BOCK = Colors.GREEN_BOLD_BRIGHT + "\n" +
+    public static final String SUPER_BOCK = Colors.RED_BOLD_BRIGHT + "\n" +
             "    _____ _    _ _____  ______ _____    ____   ____   _____ _  __ \n" +
             "   / ____| |  | |  __ \\|  ____|  __ \\  |  _ \\ / __ \\ / ____| |/ /\n" +
             "  | (___ | |  | | |__) | |__  | |__) | | |_) | |  | | |    | ' / \n" +
