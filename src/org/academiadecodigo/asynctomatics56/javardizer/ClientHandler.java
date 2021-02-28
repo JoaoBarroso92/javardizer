@@ -85,17 +85,26 @@ public class ClientHandler implements Runnable {
         makingQuestions = new MakingQuestions();
 
         out.write(Ascii.Q1.getBytes());
-        out.write(Ascii.Q2.getBytes());
-        out.write(Ascii.Q3.getBytes());
-        out.write(Ascii.Q4.getBytes());
-        out.write(Ascii.Q5.getBytes());
-        out.write(Ascii.Q6.getBytes());
-        out.write(Ascii.Q7.getBytes());
-        out.write(Ascii.Q8.getBytes());
-        out.write(Ascii.Q9.getBytes());
-        out.write(Ascii.Q10.getBytes());
-        out.write(Ascii.SUPER_BOCK.getBytes());
         makingQuestions.question1(Questions.Q1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q2.getBytes());
+        makingQuestions.question2(Questions.Q2, 4, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q3.getBytes());
+        makingQuestions.question3(Questions.Q3, 3, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q4.getBytes());
+        makingQuestions.question4(Questions.Q4, 2, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q5.getBytes());
+        makingQuestions.question5(Questions.Q5, 2, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q6.getBytes());
+        makingQuestions.question6(Questions.Q6, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q7.getBytes());
+        makingQuestions.question7(Questions.Q7, 4, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q8.getBytes());
+        makingQuestions.question8(Questions.Q8, 3, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q9.getBytes());
+        makingQuestions.question9(Questions.Q9, 1, prompt, clientSocket, scoreBoard, connectedUsers);
+        out.write(Ascii.Q10.getBytes());
+        makingQuestions.question10(Questions.Q10, 2, prompt, clientSocket, scoreBoard, connectedUsers);
+        //out.write(Ascii.SUPER_BOCK.getBytes());
 
     }
     

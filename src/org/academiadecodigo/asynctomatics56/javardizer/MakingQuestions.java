@@ -14,11 +14,11 @@ import java.util.Map;
 
 public class MakingQuestions {
 
-    public int counter = 0;
+    public static int counter = 0;
 
     private void timer() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -48,14 +48,14 @@ public class MakingQuestions {
                 wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
         }
 
-        question2(question, correctAnswer, prompt, clientSocket, scoreBoard, connectedUsers);
+        //question2(question, correctAnswer, prompt, clientSocket, scoreBoard, connectedUsers);
     }
 
-    public void question2(
-            String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+    public void question2(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
             throws IOException, InterruptedException {
 
-        String[] options = {"e", "f", "g", "h"};
+        String[] options = {Questions.Q2_ANS_A,Questions.Q2_ANS_B, Questions.Q2_ANS_C, Questions.Q2_ANS_D};
+
         MenuInputScanner question2 = new MenuInputScanner(options);
         question2.setMessage(question);
 
@@ -63,11 +63,223 @@ public class MakingQuestions {
         timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 4:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+    public void question3(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q3_ANS_A,Questions.Q3_ANS_B, Questions.Q3_ANS_C, Questions.Q3_ANS_D};
+
+        MenuInputScanner question3 = new MenuInputScanner(options);
+        question3.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question3);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 3:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+
+    public void question4(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q4_ANS_A,Questions.Q4_ANS_B, Questions.Q4_ANS_C, Questions.Q4_ANS_D};
+
+        MenuInputScanner question4 = new MenuInputScanner(options);
+        question4.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question4);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 2:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+    public void question5(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q5_ANS_A,Questions.Q5_ANS_B, Questions.Q5_ANS_C, Questions.Q5_ANS_D};
+
+        MenuInputScanner question5 = new MenuInputScanner(options);
+        question5.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question5);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 2:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+    public void question6(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q6_ANS_A,Questions.Q6_ANS_B, Questions.Q6_ANS_C, Questions.Q6_ANS_D};
+
+        MenuInputScanner question6 = new MenuInputScanner(options);
+        question6.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question6);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
         switch (answerIndex) {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(Ascii.Q1.getBytes());
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+
+    public void question7(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q7_ANS_A,Questions.Q7_ANS_B, Questions.Q7_ANS_C, Questions.Q7_ANS_D};
+
+        MenuInputScanner question7 = new MenuInputScanner(options);
+        question7.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question7);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 4:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+    public void question8(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q8_ANS_A,Questions.Q8_ANS_B, Questions.Q8_ANS_C, Questions.Q8_ANS_D};
+
+        MenuInputScanner question8 = new MenuInputScanner(options);
+        question8.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question8);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 3:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+
+    public void question9(String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q9_ANS_A,Questions.Q9_ANS_B, Questions.Q9_ANS_C, Questions.Q9_ANS_D};
+
+        MenuInputScanner question9 = new MenuInputScanner(options);
+        question9.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question9);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+
+        switch (answerIndex) {
+            case 1:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
+                option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+                break;
+            default:
+                OutputStream wrong = clientSocket.getOutputStream();
+                wrong.write((Messages.WRONG_ANSWER + scoreBoard.get(clientSocket) + "\n").getBytes());
+        }
+
+    }
+
+
+
+    public void question10(
+            String question, int correctAnswer, Prompt prompt, Socket clientSocket, Map scoreBoard, Map connectedUsers)
+            throws IOException, InterruptedException {
+
+        String[] options = {Questions.Q10_ANS_A,Questions.Q10_ANS_B , Questions.Q10_ANS_C, Questions.Q10_ANS_D};
+        MenuInputScanner question10 = new MenuInputScanner(options);
+        question10.setMessage(question);
+
+        int answerIndex = prompt.getUserInput(question10);
+        timer();
+
+        int score = (Integer) scoreBoard.get(clientSocket);
+        switch (answerIndex) {
+            case 2:
+                scoreBoard.replace(clientSocket, score, score + 10);
+                OutputStream option1 = clientSocket.getOutputStream();
                 option1.write((Messages.CORRECT_ANSWER + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
@@ -78,10 +290,12 @@ public class MakingQuestions {
         endGame(scoreBoard, connectedUsers);
     }
 
+
+
     public void endGame(Map<Socket, Integer> scoreBoard, Map<Socket, Integer> connectedUsers) throws IOException {
 
         if(counter == Game.MAX_PLAYERS){
-            for(Socket socket : scoreBoard.keySet()){
+            for(Socket socket : connectedUsers.keySet()){
                 for(Socket sockets : connectedUsers.keySet()){
                     OutputStream right = socket.getOutputStream();
                     right.write((Colors.PURPLE + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
