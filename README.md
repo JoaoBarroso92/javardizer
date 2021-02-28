@@ -1,4 +1,7 @@
-![alt text](<./READMEIMG./READMEIMG_Javardizer.png)
+![alt text1][logo]
+
+[logo]: READMEIMG/READMEIMG_Javardizer.png "Title Text"
+
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `JAVARDIZER`
 ```python
 JAVARDIZER is a project developed by five code cadets from <Academia de Código_>. 
