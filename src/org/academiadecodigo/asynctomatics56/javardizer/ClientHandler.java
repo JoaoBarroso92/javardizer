@@ -17,8 +17,8 @@ public class ClientHandler implements Runnable {
 
     private Socket clientSocket;
     private BufferedReader inputReader;
-    private Map<Socket, Integer> scoreBoard;
-    private Map<Socket, String> connectedUsers;
+    public static Map<Socket, Integer> scoreBoard;
+    public static Map<Socket, String> connectedUsers;
     private Prompt prompt;
 
 
@@ -79,7 +79,7 @@ public class ClientHandler implements Runnable {
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         prompt = new Prompt(in, out);
 
-        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket, scoreBoard);
+        Questions.question1(Questions.QUESTION_1, 1, prompt, clientSocket, scoreBoard, connectedUsers);
 
 
     }

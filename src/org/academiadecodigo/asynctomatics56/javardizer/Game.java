@@ -24,7 +24,6 @@ public class Game {
         this.scoreBoard = new HashMap<>();
 
         waitingForPlayers();
-        //gameLogic();
     }
 
 
@@ -38,9 +37,4 @@ public class Game {
         }
     }
 
-
-    // The "prompt view" messages should be sent via PrintWriter!
-    public void gameLogic() {
-
-    }
 }
