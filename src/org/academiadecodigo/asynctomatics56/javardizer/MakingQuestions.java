@@ -81,7 +81,7 @@ public class MakingQuestions {
             for(Socket socket : scoreBoard.keySet()){
                 for(Socket sockets : connectedUsers.keySet()){
                     OutputStream right = socket.getOutputStream();
-                    right.write((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points").getBytes());
+                    right.write((Colors.PURPLE + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
                     System.out.println(((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points")));
                 }
             }
