@@ -1,5 +1,6 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
+import org.academiadecodigo.asynctomatics56.javardizer.utils.Colors;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
@@ -64,11 +65,11 @@ public class MakingQuestions {
             case 1:
                 scoreBoard.replace(clientSocket, score, score + 10);
                 OutputStream option1 = clientSocket.getOutputStream();
-                option1.write(("Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                option1.write((Colors.GREEN + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
                 break;
             default:
                 OutputStream wrong = clientSocket.getOutputStream();
-                wrong.write(("Wrong answer. Your score is: " + scoreBoard.get(clientSocket) + "\n").getBytes());
+                wrong.write((Colors.RED + "Correct answer. Your score is: " + scoreBoard.get(clientSocket) + "\n" + Colors.RESET).getBytes());
         }
         counter++;
         endGame(scoreBoard, connectedUsers);
