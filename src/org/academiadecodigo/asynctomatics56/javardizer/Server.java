@@ -59,8 +59,7 @@ public class Server {
         clientSocket = serverSocket.accept();
         OutputStream os = clientSocket.getOutputStream();
         os.write(Ascii.MAIN_MENU_IMG.getBytes());
-        os.write(Messages.START_GAME.getBytes());
-        os.write(Messages.QUIT_GAME.getBytes());
+        os.write(Ascii.START_GAME.getBytes());
         os.flush();
     }
 
