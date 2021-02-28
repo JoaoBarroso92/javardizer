@@ -6,6 +6,7 @@ import org.academiadecodigo.asynctomatics56.javardizer.utils.Messages;
 import org.academiadecodigo.asynctomatics56.javardizer.utils.Questions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 
 
 import java.io.*;
@@ -102,9 +103,14 @@ public class ClientHandler implements Runnable {
         InputStream in = clientSocket.getInputStream();
         PrintStream out = new PrintStream(clientSocket.getOutputStream());
         Prompt prompt = new Prompt(in, out);
-        StringInputScanner scn = new StringInputScanner();
-        scn.setMessage(Messages.ENTER_USERNAME);
-        return prompt.getUserInput(scn);
+        StringInputScanner scnfake = new StringInputScanner();
+        scnfake.setMessage("");
+        if(prompt.getUserInput(scnfake).equals("/s")){
+            StringInputScanner scn = new StringInputScanner();
+            scn.setMessage(Messages.ENTER_USERNAME);
+            return prompt.getUserInput(scn);
+        }
+        return null;
     }
 
     private void addClient() throws IOException {
