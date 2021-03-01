@@ -76,8 +76,6 @@ public class ClientHandler implements Runnable {
                 os.write("System Exit".getBytes());
                 System.exit(0);
             }
-
-
         }
     }
 

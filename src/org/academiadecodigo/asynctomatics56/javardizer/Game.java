@@ -1,9 +1,5 @@
 package org.academiadecodigo.asynctomatics56.javardizer;
 
-
-import org.academiadecodigo.bootcamp.Prompt;
-
-
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +16,6 @@ public class Game {
 
         this.connectedUsers = connectedUsers;
         this.scoreBoard = new HashMap<>();
-
         waitingForPlayers();
     }
 

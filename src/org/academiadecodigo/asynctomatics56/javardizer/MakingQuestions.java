@@ -35,7 +35,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question1);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -59,7 +58,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question2);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -83,7 +81,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question3);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -107,7 +104,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question4);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -131,7 +127,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question5);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -155,7 +150,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question6);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -179,7 +173,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question7);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -203,7 +196,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question8);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -227,7 +219,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question9);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
 
         switch (answerIndex) {
@@ -252,7 +243,6 @@ public class MakingQuestions {
 
         int answerIndex = prompt.getUserInput(question10);
         //timer();
-
         int score = (Integer) scoreBoard.get(clientSocket);
         switch (answerIndex) {
             case 2:
@@ -277,7 +267,7 @@ public class MakingQuestions {
             for(Socket socket : connectedUsers.keySet()) {
                 for(Socket sockets : connectedUsers.keySet()){
                     OutputStream out = socket.getOutputStream();
-                    out.write((Colors.PURPLE + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
+                    out.write((Colors.PURPLE + "  -> " + connectedUsers.get(sockets) + " finished with " + scoreBoard.get(sockets) + " points" + Colors.RESET + "\n").getBytes());
                     System.out.println(((connectedUsers.get(sockets) + " : " + scoreBoard.get(sockets) + " points")));
                 }
             }
@@ -301,8 +291,9 @@ public class MakingQuestions {
                 winner = socket;
             }
         }
-        return (Colors.BLUE_BOLD_BRIGHT + "\n" + connectedUsers.get(winner) + " wins the game with " + score + " " +
-                "points " + Colors.RESET + "\n");
+        return (Colors.BLUE_BOLD_BRIGHT + "\n" + "  * " + connectedUsers.get(winner) + " wins the game with " + score +
+                " " +
+                "points *" + Colors.RESET + "\n\n");
     }
 
 }
