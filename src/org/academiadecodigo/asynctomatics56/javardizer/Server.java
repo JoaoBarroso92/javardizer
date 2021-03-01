@@ -20,7 +20,7 @@ public class Server {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private Map<Socket, String> connectedUsers;
-    private final int NUM_THREADS = 200;
+    private final int NUM_THREADS = 1500;
     ClientHandler clientHandler;
 
     public Server(int port) {

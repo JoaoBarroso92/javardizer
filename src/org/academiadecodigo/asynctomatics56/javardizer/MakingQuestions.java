@@ -34,7 +34,7 @@ public class MakingQuestions {
         question1.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question1);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -58,7 +58,7 @@ public class MakingQuestions {
         question2.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question2);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -82,7 +82,7 @@ public class MakingQuestions {
         question3.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question3);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -106,7 +106,7 @@ public class MakingQuestions {
         question4.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question4);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -130,7 +130,7 @@ public class MakingQuestions {
         question5.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question5);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -154,7 +154,7 @@ public class MakingQuestions {
         question6.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question6);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -178,7 +178,7 @@ public class MakingQuestions {
         question7.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question7);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -202,7 +202,7 @@ public class MakingQuestions {
         question8.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question8);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -226,7 +226,7 @@ public class MakingQuestions {
         question9.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question9);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
 
@@ -251,7 +251,7 @@ public class MakingQuestions {
         question10.setMessage(question);
 
         int answerIndex = prompt.getUserInput(question10);
-        timer();
+        //timer();
 
         int score = (Integer) scoreBoard.get(clientSocket);
         switch (answerIndex) {

@@ -128,7 +128,7 @@ public class ClientHandler implements Runnable {
         return null;
     }
 
-    private void addClient() throws IOException {
+    private synchronized void addClient() throws IOException {
 
         String username = createUsername();
         if (!connectedUsers.containsValue(username)) {

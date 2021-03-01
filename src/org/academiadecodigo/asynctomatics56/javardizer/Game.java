@@ -12,7 +12,7 @@ import java.util.Map;
 public class Game {
 
     //CHANGE THE PROGRAM TO COUNT THE PLAYER USING THE SOCKET LIST SIZE
-    public static final int MAX_PLAYERS = 5;
+    public static final int MAX_PLAYERS = 6;
     private Map<String, Integer> scoreBoard;
     private Map<Socket, String> connectedUsers;
 
